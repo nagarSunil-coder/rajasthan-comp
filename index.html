@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>राजस्थान सामान्य ज्ञान पोल</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body.body-wrapper {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f5f9;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .quiz-shell {
+            background: white;
+            width: 100%;
+            max-width: 800px;
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .quiz-header {
+            background: linear-gradient(to right, #fb923c, #ec4899);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .quiz-header h1 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .main-menu,
+        .quiz-body,
+        .results,
+        .footer {
+            padding: 2rem;
+        }
+
+        .grid-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .section-btn {
+            padding: 1.2rem;
+            border: 2px solid #ccc;
+            background: #f9fafb;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-btn:hover {
+            background: #e2e8f0;
+        }
+
+        .section-btn.completed {
+            background-color: #1e40af;
+            color: white;
+            border-color: #1e3a8a;
+        }
+
+        .options-list button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: #f9fafb;
+            border: 2px solid transparent;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .options-list button:hover {
+            background: #e2e8f0;
+            border-color: #60a5fa;
+        }
+
+        .option-btn.answered.correct {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+
+        .option-btn.answered.incorrect {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: white;
+        }
+
+        .option-btn.answered {
+            cursor: not-allowed;
+        }
+
+        .results h2 {
+            font-size: 1.8rem;
+            color: #1f2937;
+        }
+
+        .results p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .results-buttons {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .results-buttons button,
+        .footer button {
+            padding: 0.8rem 1.5rem;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: 10px;
+            border: none;
+            color: white;
+            background: #1d4ed8;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .results-buttons button:hover,
+        .footer button:hover {
+            background: #2563eb;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #e5e7eb;
+            background-color: #f8fafc;
+        }
+
+        #progress-text {
+            color: #374151;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body class="body-wrapper">
+    <div class="quiz-shell">
+        <div class="quiz-header">
+            <h1>राजस्थान सामान्य ज्ञान महा पोल</h1>
+            <p id="header-subtitle">अपनी पसंद का एक अनुभाग चुनें!</p>
+        </div>
+
+        <div id="main-menu-container" class="main-menu">
+            <div id="section-buttons-grid" class="grid-buttons"></div>
+        </div>
+
+        <div id="quiz-body-container" class="quiz-body">
+            <h2 id="question-text">प्रश्न लोड हो रहा है...</h2>
+            <div class="options-list" id="options-list"></div>
+        </div>
+
+        <div id="section-results-container" class="results" style="display: none;">
+            <h2 id="results-title">अनुभाग पूरा हुआ!</h2>
+            <p id="score-text">आपका स्कोर</p>
+            <p id="percentage-text">प्रतिशत</p>
+            <div class="results-buttons">
+                <button id="retry-section-btn">अनुभाग पुनः प्रयास करें</button>
+                <button id="back-to-menu-btn">मुख्य मेनू पर वापस जाएं</button>
+            </div>
+        </div>
+
+        <div id="quiz-footer" class="footer" style="display: none;">
+            <button id="menu-from-quiz-btn">मुख्य मेनू</button>
+            <div id="progress-text">प्रश्न 1 / 10</div>
+            <button id="next-btn">अगला</button>
+        </div>
+    </div>
+</body>
+<script src="gk-poll.js"></script>
+</body>
+</html>
